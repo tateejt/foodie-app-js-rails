@@ -65,13 +65,8 @@ function createFood(){
   })
   .then(resp => resp.json())
   .then(food => {
-    document.querySelector('#main ul').innerHTML += `
-    <li><a href="#" data-id="${food.id}">${food.description}</a>
-     - ${food.completed ? "Eaten" : "Have not Had"}
-     <button data-id=${food.id} onclick="removeFood(${food.id})"; return false>Delete</button>
-     <button data-id=${food.id} onclick="editFood(${food.id})"; return false>Edit</button>
-     </li>
-    `
+    let newFood = new Fd(food)
+    document.querySelector('#main ul').innerHTML += newFood.renderTd()
     attachClickToFoodieLinks()
     clearForm()
   })
