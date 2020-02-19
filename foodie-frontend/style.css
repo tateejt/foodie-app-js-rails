@@ -1,0 +1,61 @@
+body {
+
+  text-align: left;
+  margin-top: 30px;
+  background: #1EEBF8;
+
+}
+
+h1 {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 55px;
+  font-weight: 1000;
+  text-transform: uppercase;
+  color: ;
+}
+
+p{
+  font-weight: 300;
+  font-family: 'Source Code Pro', monospace;
+}
+
+input {
+  border-radius: 5px;
+  border-color: black;
+  padding-right: 200px;
+  padding-left: 10px;
+  padding-bottom: 3px;
+}
+
+
+#enter {
+  margin-left: 15px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #04A1BF;
+  background-color: #025F70;
+  border-color: black;
+  	transition: all 0.50s ease;
+	-
+	font-weight: normal
+
+}
+
+#enter:hover{
+	background-color: #02798F;
+	color: #FFCD5D;
+}
+
+button {
+  background-color: grey;
+  color: white;
+  border-color: grey;
+  border-radius: 100px;
+}
+
+a {
+  color: black;
+}
+a:hover {
+  color: grey;
+}
