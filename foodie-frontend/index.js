@@ -45,6 +45,8 @@ function displayCreateForm(){
     <input type="text" id="description"></br>
     <label>Eaten:</label>
     <input type="checkbox" id="completed"></br>
+    <label>Rating:</label>
+    <input type="number" id="rating"></br>
     <input type="submit" value="Create Food Spot"></br>
   `
   foodieFormDiv.innerHTML = html
@@ -53,7 +55,8 @@ function displayCreateForm(){
 function createFood(){
   const food = {
     description: document.getElementById('description').value,
-    completed: document.getElementById('completed').checked
+    completed: document.getElementById('completed').checked,
+    rating: document.getElementById('rating').value
   }
   fetch(BASE_URL+'/foodies',{
     method: "POST",
@@ -84,6 +87,7 @@ function displayFood(e){
     main.innerHTML += `
     <h3>${food.description}</h3> <hr>
     <p>${food.completed ? "Eaten" : "Have not Had"}</p>
+    <h4>${food.rating}</h4>
     `
   })
 }
@@ -112,6 +116,8 @@ function editFood(id){
       <input type="text" id="description" value="${food.description}"></br>
       <label>Eaten:</label>
       <input type="checkbox" id="completed" ${food.completed ? "checked" : ""}></br>
+      <label>Rating:</label>
+      <input type="number" id="rating" value="${food.rating}"></br>
       <input type="submit" value="Edit Food Spot"></br>
     `
     foodieFormDiv.innerHTML = html
@@ -121,7 +127,8 @@ function editFood(id){
 function updateFood(id){
   const food = {
     description: document.getElementById('description').value,
-    completed: document.getElementById('completed').checked
+    completed: document.getElementById('completed').checked,
+    rating: document.getElementById('rating').value
   }
   fetch(BASE_URL + `/foodies/${id}`, {
     method: "PATCH",
@@ -136,6 +143,7 @@ function updateFood(id){
     document.querySelectorAll(`li a[data-id="${id}"]`)[0].parentElement.innerHTML = `
     <a href="#" data-id="${food.id}">${food.description}</a>
      - ${food.completed ? "Eaten" : "Have not Had"}
+     - ${food.rating}
      <button data-id=${food.id} onclick="removeFood(${food.id})"; return false>Delete</button>
      <button data-id=${food.id} onclick="editFood(${food.id})"; return false>Edit</button>
      `
@@ -151,12 +159,14 @@ class Fd {
     this.id = food.id
     this.description = food.description
     this.completed = food.completed
+    this.rating = food.rating
   }
 
   renderTd(){
     return `
       <li><a href="#" data-id="${this.id}">${this.description}</a>
        - ${this.completed ? "Eaten" : "Have not had"}
+       - ${this.rating}
        <button data-id=${this.id} onclick="removeFood(${this.id})"; return false>Delete</button>
        <button data-id=${this.id} onclick="editFood(${this.id})"; return false>Edit</button>
        </li>

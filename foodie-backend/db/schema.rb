@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_035534) do
   create_table "foodies", force: :cascade do |t|
     t.string "description"
     t.boolean "completed"
+    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

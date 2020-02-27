@@ -45,6 +45,6 @@ class FoodiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def foody_params
-      params.require(:foody).permit(:description, :completed)
+      params.require(:foody).permit(:description, :completed, :rating)
     end
 end
